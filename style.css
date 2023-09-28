@@ -108,7 +108,7 @@ html, body{
     justify-content: center;
     align-items: center;
 }
-/* .vid{
+.vid{
     position: absolute;
     filter:brightness(.3);
     right: 0;
@@ -117,7 +117,7 @@ html, body{
     object-fit: cover;
     min-height: 100%;
     width: 100%;
-} */
+}
 .tagline{
     position: relative;
     padding-top: 100px;
