@@ -1,7 +1,7 @@
 const hamburger = document.querySelector(".hamburger-menu");
 const mobileNav = document.querySelector("nav");
 const style = document.createElement('style');
-const cssRule = ".outline{ -webkit-text-stroke: .05em white; }";
+const cssRule = ".outline{ -webkit-text-stroke: .03em white; }";
 let visible = false;
 let media = window.matchMedia("(min-width: 900px)").matches;
 
@@ -29,7 +29,7 @@ hamburger.addEventListener("click", () =>{
     }
 })
 
-if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-    style.appendChild(document.createTextNode(cssRule));
-    document.head.appendChild(style);
-}
+// if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+//     style.appendChild(document.createTextNode(cssRule));
+//     document.head.appendChild(style);
+// }
