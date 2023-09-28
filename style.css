@@ -115,9 +115,9 @@ html, body{
     right: 0;
     bottom: 0;
     z-index: -1;
-    object-fit: cover;
+    /* object-fit: cover;
     min-height: 100%;
-    width: 100%;
+    width: 100%; */
 }
 .tagline{
     position: relative;
@@ -136,9 +136,9 @@ html, body{
     color: #ED4350;
     text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.315);
 }
-/* .outline{
-    -webkit-text-stroke: .05rem white;
-} */
+ .outline{
+    -webkit-text-stroke: .05em white;
+} 
 .tagline p{
     max-width: 1000px;
     text-align: center;
@@ -160,7 +160,7 @@ html, body{
     animation: bgMove 10s linear;
     animation-iteration-count: infinite; /*116*/
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 
 }
@@ -173,9 +173,9 @@ html, body{
 }
 .about-container{
     position: relative;
-    padding: 50px;
-    max-width: 560px;
-    margin-left: 45%;
+    padding: 40px;
+    max-width: 600px;
+    margin-left: 50%;
 }
      /* .about-container::before{
     content:'';
