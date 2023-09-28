@@ -1,0 +1,285 @@
+html, body{
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ---NAV--- */
+.nav-holder{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+.nav-items{
+    /* background: linear-gradient(rgba(0, 0, 0, 0.247) 30%, rgba(87, 41, 3, 0.63)), url(images/BucketPatternYellow.png);
+    background-size: 500px;
+    box-shadow: 0px 4px rgb(124, 72, 12), 0px 6px 5px rgba(0, 0, 0, 0.247); */
+    background: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content:start;
+    padding-inline: 100px;
+    padding-block: 20px;
+    min-height: 50px;
+    gap: 40px;
+    /*animation: slideIn .5s;*/
+    
+}
+.nav-items img{
+    width: 6rem;
+    object-fit:cover;
+    transition: .3s;
+}
+.nav-items img:hover{
+    transform: scale(1.1);
+}
+.nav-items ul{
+    padding: 0;
+    display: flex;
+    gap: 40px;
+}
+.nav-items li{
+    list-style: none;
+    position: relative;
+    font-family: 'MoGa ReZeKi DuA ReZeKi-DuA';
+    transition: .3s;
+}
+.nav-items li:hover{
+    transform: scale(1.1);
+}
+.nav-items a{
+    text-decoration: none;
+    color: #EFC31A;
+    font-size: 14px;
+    transition: .3s;
+}
+.nav-items a:hover{
+    color: #ED4350;
+}
+.nav-items li::after{
+    content:'';
+    position: absolute;
+    display: block;
+    background-color: #ED4350;
+    width: 100%;
+    height: 2px;
+    transform:scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .3s;
+}
+.nav-items li:hover::after{
+    transform:scaleX(1);
+    transform-origin: bottom left;
+}
+
+.hamburger-menu{
+    display:none;
+    flex-direction:column;
+    gap: 5px;
+    padding: 5px;
+    background: none;
+    border: none;
+}
+.hamburger{
+    content:'';
+    width: 20px;
+    height: 3px;
+    background: white;
+    border-radius: 999px;
+}
+
+/* ---HERO--- */
+.hero{
+    position: relative;
+    min-height: 100vh;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(39, 25, 10, 0.9)); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vid{
+    position: absolute;
+    filter:brightness(.3);
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    object-fit: cover;
+    min-height: 100%;
+    width: 100%;
+}
+.tagline{
+    position: relative;
+    padding-top: 100px;
+    padding-inline: 50px;
+    display: flex;
+    align-items: top;
+    flex-direction: column;
+    font-family: 'MoGa ReZeKi DuA ReZeKi-DuA';
+}
+.tagline h1{
+    max-width: 1000px;
+    text-align: center;
+    font-size: 100px;
+    margin: 0;
+    color: #ED4350;
+    text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.315);
+}
+.outline{
+    -webkit-text-stroke: .05rem white;
+}
+.tagline p{
+    max-width: 1000px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 3px 3px rgba(0, 0, 0, 0.288);
+    font-size: 30px;
+    font-family:'Dimbo';
+}
+
+/* ---ABOUT--- */
+.about-us{
+    position: relative;
+    background:url(images/BucketPatternYellow.png);
+    min-height: 90vh;
+    background-attachment: fixed;
+    box-shadow:0 5px 10px rgba(0, 0, 0, 0.473) inset;
+    background-size: 700px;
+    animation: bgMove 10s linear;
+    animation-iteration-count: infinite; /*116*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.about-us::before{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.247), rgba(87, 41, 3, 0.63))
+}
+.about-container{
+    position: relative;
+    padding: 50px;
+    max-width: 560px;
+    margin-left: 45%;
+}
+     /* .about-container::before{
+    content:'';
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:skewX(-10deg);
+    transform-origin: top;
+    background: rgb(209, 157, 13);
+    z-index: -1;
+}      */
+
+.about-container h2{
+    margin: 0;
+    font-family: 'MoGa ReZeKi DuA ReZeKi-DuA';
+    font-size: 80px;
+    color: #ED4350;
+    text-shadow: 4px 4px rgba(0, 0, 0, 0.178);
+}
+.about-container p{
+    font-family: "Dimbo";
+    font-size: 26px;
+    color: white;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.438);
+    letter-spacing: 1px;
+}
+ .spline-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+} 
+@keyframes bgMove{
+    from{
+        background-position: 0px 0px;
+    }
+    to{
+        background-position: 116px -58px;
+    }
+}
+@keyframes slideIn{
+    from{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+
+@media (max-width: 900px){
+    nav{
+        /* background: linear-gradient(to left, rgba(0, 0, 0, 0.247) 70%, rgba(87, 16, 3, 0.404)), url(images/BucketPatternYellow.png);
+        background-size: 700px;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.247); */
+        background: black;
+        position: fixed;
+        inset: 0 0 0 30%;
+        transform: translateX(110%);
+        transition: transform .3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+    .nav-items ul{
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 15vh;
+        gap: 25px;
+    }
+    .nav-items a{
+        font-size: 25px;
+    }
+    .nav-items{
+        padding-inline: 50px;
+        justify-content: space-between;
+    }
+    .hamburger-menu{
+        z-index: 9999;
+        display: flex;
+    }
+    .tagline h1{
+        font-size: 60px;
+        
+    }
+    .tagline p{
+        font-size: 25px;
+       
+    }
+    .about-us{
+        display: block;
+        min-height: 50vh;
+    }
+    .spline-container{
+        width: 100%;
+        height: 300px;
+        position: relative;
+    }
+    .about-container{
+        padding-inline: 50px;
+        padding-top: 0;
+        padding-bottom: 20px;
+        max-width: 100%;
+        display: block;
+        margin: 0;
+        right: 0;
+    }
+    .about-container h2{
+        font-size: 50px;
+        color: #ED4350;
+        text-shadow: 4px 4px rgba(0, 0, 0, 0.178);
+    }
+    .about-container p{
+        font-size: 16px;
+    }
+}
