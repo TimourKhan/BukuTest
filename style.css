@@ -1,3 +1,11 @@
+@font-face{
+    src: url(fonts/MoGa-ReZeKi-DuA.ttf);
+    font-family: Moga;
+}
+@font-face{
+    src: url(fonts/Dimbo\ Regular.ttf);
+    font-family: Dimbo;
+}
 html, body{
     box-sizing: border-box;
     margin: 0;
@@ -44,7 +52,7 @@ html, body{
 .nav-items li{
     list-style: none;
     position: relative;
-    font-family: 'MoGa ReZeKi DuA ReZeKi-DuA';
+    font-family: 'Moga';
     transition: .3s;
 }
 .nav-items li:hover{
@@ -117,7 +125,7 @@ html, body{
     display: flex;
     align-items: top;
     flex-direction: column;
-    font-family: 'MoGa ReZeKi DuA ReZeKi-DuA';
+    font-family: 'Moga';
 }
 .tagline h1{
     max-width: 1000px;
@@ -179,7 +187,7 @@ html, body{
 
 .about-container h2{
     margin: 0;
-    font-family: 'MoGa ReZeKi DuA ReZeKi-DuA';
+    font-family: 'Moga';
     font-size: 80px;
     color: #ED4350;
     text-shadow: 4px 4px rgba(0, 0, 0, 0.178);
