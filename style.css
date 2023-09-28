@@ -135,9 +135,9 @@ html, body{
     color: #ED4350;
     text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.315);
 }
-.outline{
+/* .outline{
     -webkit-text-stroke: .05rem white;
-}
+} */
 .tagline p{
     max-width: 1000px;
     text-align: center;
