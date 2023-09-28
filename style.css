@@ -116,9 +116,9 @@ html, body{
     right: 0;
     bottom: 0;
     z-index: -1;
-    /* object-fit: cover;
+    object-fit: cover;
     min-height: 100%;
-    width: 100%; */
+    width: 100%;
 }
 .tagline{
     position: relative;
@@ -129,22 +129,22 @@ html, body{
     flex-direction: column;
     font-family: 'Moga';
 }
-.tagline h1{
+#tset{
     max-width: 1000px;
     text-align: center;
     font-size: 6rem;
     margin: 0;
     color: #ED4350;
-    text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.315);
+    text-shadow: .08em .08em 0 rgba(0, 0, 0, 0.199);
 }
  .outline{
-    -webkit-text-stroke: .02em white;
+    -webkit-text-stroke: .05em white;
 } 
 .tagline p{
     max-width: 1000px;
     text-align: center;
     color: #ffffff;
-    text-shadow: 3px 3px rgba(0, 0, 0, 0.288);
+    text-shadow: .08em .08em rgba(0, 0, 0, 0.315);
     font-size: 2rem;
     font-family:'Dimbo';
 }
@@ -193,13 +193,13 @@ html, body{
     font-family: 'Moga';
     font-size: 5rem;
     color: #ED4350;
-    text-shadow: 4px 4px rgba(0, 0, 0, 0.178);
+    text-shadow: .08em .08em rgba(0, 0, 0, 0.178);
 }
 .about-container p{
     font-family: "Dimbo";
     font-size: 1.6rem;
     color: white;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.438);
+    text-shadow: .08em .08em rgba(0, 0, 0, 0.438);
     letter-spacing: 1px;
 }
  .spline-container{
