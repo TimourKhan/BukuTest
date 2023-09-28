@@ -103,7 +103,8 @@ html, body{
 .hero{
     position: relative;
     min-height: 100vh;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(39, 25, 10, 0.9)); */
+    min-height: 100dvh;
+    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(39, 25, 10, 0.9));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,6 +153,7 @@ html, body{
     position: relative;
     background:url(images/BucketPatternYellow.png);
     min-height: 90vh;
+    min-height: 90dvh;
     background-attachment: fixed;
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.473) inset;
     background-size: 700px;
