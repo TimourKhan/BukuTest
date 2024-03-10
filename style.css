@@ -6,13 +6,31 @@
     src: url(fonts/Dimbo\ Regular.ttf);
     font-family: Dimbo;
 }
-html, body{
+:root{
+    --bukured: #ED4350;
+    --bukuyellow: #EFC31A;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: var(--bukuyellow);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--bukured);
+    border-radius: 100vw;
+}
+body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+:root{
+   --h1: 6rem;
+   --h2: 5rem;
 }
 
 /* ---NAV--- */
@@ -20,25 +38,26 @@ html, body{
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 999;
+    z-index: 100;
+    transition: .3s;
+    
 }
 .nav-items{
     /* background: linear-gradient(rgba(0, 0, 0, 0.247) 30%, rgba(87, 41, 3, 0.63)), url(images/BucketPatternYellow.png);
     background-size: 500px;
     box-shadow: 0px 4px rgb(124, 72, 12), 0px 6px 5px rgba(0, 0, 0, 0.247); */
-    background: rgb(0, 0, 0);
+    background: linear-gradient(rgba(19, 1, 1, 0.5), rgba(0, 0, 0, 0));
     display: flex;
     align-items: center;
-    justify-content:start;
-    padding-inline: 100px;
+    justify-content:space-between;
+    padding-inline: 300px;
     padding-block: 20px;
-    min-height: 50px;
+    min-height: 100px;
     gap: 40px;
-    /*animation: slideIn .5s;*/
     
 }
 .nav-items img{
-    width: 6rem;
+    width: 8rem;
     object-fit:cover;
     transition: .3s;
 }
@@ -52,12 +71,9 @@ html, body{
 }
 .nav-items li{
     list-style: none;
-    position: relative;
     font-family: 'Moga';
     transition: .3s;
-}
-.nav-items li:hover{
-    transform: scale(1.1);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 .nav-items a{
     text-decoration: none;
@@ -65,25 +81,38 @@ html, body{
     font-size: 14px;
     transition: .3s;
 }
-.nav-items a:hover{
+.inactive:hover{
+    transform: scale(1.1);
+}
+.inactive a:hover{
     color: #ED4350;
 }
-.nav-items li::after{
+.inactive::after{
     content:'';
     position: absolute;
     display: block;
     background-color: #ED4350;
     width: 100%;
-    height: 2px;
+    height: .1rem;
     transform:scaleX(0);
     transform-origin: bottom right;
     transition: transform .3s;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    
 }
-.nav-items li:hover::after{
+.inactive:hover::after{
     transform:scaleX(1);
     transform-origin: bottom left;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
-
+ .active{
+    transform: scale(1.1);
+}
+.active a{
+    color: #ED4350;
+    text-decoration: underline .1rem;
+    text-underline-offset: 4px;
+}
 .hamburger-menu{
     display:none;
     flex-direction:column;
@@ -91,6 +120,7 @@ html, body{
     padding: 5px;
     background: none;
     border: none;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.158);
 }
 .hamburger{
     content:'';
@@ -98,6 +128,38 @@ html, body{
     height: 3px;
     background: white;
     border-radius: 999px;
+}
+
+/* ---FOOTER--- */
+footer{
+    position: relative;
+    margin-top: auto;
+    background: rgb(15, 14, 14);
+    padding-inline: 100px;
+    padding-block: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Moga';
+    color: #EFC31A;
+    font-size: 15px;
+    align-items: center;
+}
+.copyright{
+    right: 100px;
+    position: absolute;
+}
+.social{
+    display: flex;
+    gap: 50px;
+}
+.social img{
+    width: 1.2rem;
+    filter: invert(85%) sepia(18%) saturate(4218%) hue-rotate(351deg) brightness(105%) contrast(87%);
+    transition: filter .3s, transform.3s;
+}
+.social img:hover{
+    filter: invert(62%) sepia(89%) saturate(4187%) hue-rotate(322deg) brightness(87%) contrast(117%);
+    transform: scale(1.1);
 }
 
 /* ---HERO--- */
@@ -122,24 +184,24 @@ html, body{
 }
 .tagline{
     position: relative;
-    padding-top: 100px;
+    padding-block: 100px;
     padding-inline: 50px;
     display: flex;
     align-items: top;
     flex-direction: column;
     font-family: 'Moga';
 }
-#tset{
+.tagline h1{
     max-width: 1000px;
     text-align: center;
-    font-size: 6rem;
+    font-size: var(--h1);
     margin: 0;
-    color: #ED4350;
+    color: #ffffff;
     text-shadow: .08em .08em 0 rgba(0, 0, 0, 0.199);
 }
- .outline{
-    -webkit-text-stroke: .05em white;
-} 
+/* .outline{
+    -webkit-text-stroke: .05rem white;
+}  */
 .tagline p{
     max-width: 1000px;
     text-align: center;
@@ -153,46 +215,36 @@ html, body{
 .about-us{
     position: relative;
     background:url(images/BucketPatternYellow.png);
-    min-height: 90vh;
-    min-height: 90dvh;
+    min-height: 80vh;
+    min-height: 80dvh;
     background-attachment: fixed;
-    box-shadow:0 5px 10px rgba(0, 0, 0, 0.473) inset;
+    /* box-shadow:0 5px 10px rgba(0, 0, 0, 0.473) inset; */
     background-size: 700px;
     animation: bgMove 10s linear;
     animation-iteration-count: infinite; /*116*/
     display: flex;
     justify-content: left;
     align-items: center;
-
 }
 .about-us::before{
     content:'';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.247), rgba(87, 41, 3, 0.63))
+    background: linear-gradient(rgba(0, 0, 0, 0.247), rgba(87, 41, 3, 0.63));
 }
 .about-container{
     position: relative;
+    text-align: center;
     padding: 40px;
     max-width: 600px;
     margin-left: 50%;
 }
-     /* .about-container::before{
-    content:'';
-    position: absolute;
-    inset: 0 0 0 0;
-    transform:skewX(-10deg);
-    transform-origin: top;
-    background: rgb(209, 157, 13);
-    z-index: -1;
-}      */
-
 .about-container h2{
     margin: 0;
     font-family: 'Moga';
-    font-size: 5rem;
-    color: #ED4350;
+    font-size: var(--h2);
+    color: #ffffff;
     text-shadow: .08em .08em rgba(0, 0, 0, 0.178);
 }
 .about-container p{
@@ -208,7 +260,370 @@ html, body{
     left: 0;
     width: 50%;
     height: 100%;
+}
+.custom-shape-divider-bottom-1709838378 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1709838378 svg {
+    position: relative;
+    display: block;
+    width: calc(142% + 1.3px);
+    height: 60px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1709838378 .shape-fill {
+    fill: rgba(73, 42, 1, 0.15);
+}
+/* ---OUR GAMES--- */
+.custom-shape-divider-top-1709853950 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1709853950 svg {
+    position: relative;
+    display: block;
+    width: calc(142% + 1.3px);
+    height: 60px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1709853950 .shape-fill {
+    fill: rgba(73, 42, 1, 0.2);
+}
+
+.our-games{
+    z-index: 1;
+    position: relative;
+    background:linear-gradient(rgba(190, 119, 12, 0.76), rgba(122, 9, 9, 0.562)), url(images/ladbg.png);
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+/* .our-games::before{
+    z-index: -1;
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(87, 41, 3, 0.63), rgba(0, 0, 0, 0.247));
+} */
+.banner{
+    background: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+.banner h2{
+    margin-top: 1em;
+    font-size: 5rem;
+    font-family: 'Moga';
+    color: white;
+    text-shadow: .08em .08em rgba(0, 0, 0, 0.178);
+}
+.boxcontainer{
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: center;
+}
+.box{
+    overflow: hidden;
+    position: relative;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.288);
+    border-radius: 5px;
+    transition: .3s;
+}
+/* .box::after { 
+    
+    box-shadow: inset 0px 0px 20px 10px #00000077;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  } */
+.gamelogo{
+    z-index: 5;
+    width: 75%;
+    pointer-events: none;
+    position: absolute;
+    transition: .6s;
 } 
+.gamebg{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: .4s;
+    cursor: pointer;
+}
+.box:hover .gamebg{
+    transform: scale(1.1);
+}
+.box:hover .gamelogo{
+    transform: scale(1.2);
+}
+.games-desc{
+    position: relative;
+}
+.lad{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: none;
+    min-height: 80vh;
+    background: linear-gradient( rgba(34, 18, 7, 0.6), rgba(34, 18, 7, .6)), url(images/ladbg.png);
+    padding-inline: 200px;
+    padding-top: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items:center;
+    justify-content: space-between;
+    gap: 50px;
+    transition: .3s;
+    transform: translateY(10%);
+    opacity: 0;
+}
+.rprt{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: none;
+    min-height: 80vh;
+    background:url(images/rprtbg.png);
+    padding-inline: 200px;
+    padding-top: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items:center;
+    justify-content: space-between;
+    gap: 50px;
+    transition: .3s;
+    transform: translateY(10%);
+    opacity: 0;
+}
+.ck{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: none;
+    min-height: 80vh;
+    background:url(images/ckbg.png);
+    padding-inline: 200px;
+    padding-top: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items:center;
+    justify-content: space-between;
+    gap: 50px;
+    transition: .3s;
+    transform: translateY(10%);
+    opacity: 0;
+}
+.x-button{
+    position: absolute;
+    display: flex;
+    fill: var(--bukuyellow);
+    top: 50px;
+    right: 50px;
+    width: 8rem;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s, fill .4s, border .4s;
+}
+.x-button label{
+    z-index: 5;
+    position: absolute;
+    font-family: 'Dimbo';
+    font-size: 3rem;
+    padding-inline: 20px;
+    color: white;
+    transition: .3s;
+    cursor:pointer;
+}
+.x-button svg{
+    fill: rgba(255, 0, 0, 0);
+    stroke: #ffffff;
+    stroke-width: 10px;
+    stroke-linecap:square;
+    transition: .3s;
+    filter: drop-shadow(3px 5px 0 rgba(0, 0, 0, 0.349));
+}
+.x-button:hover{
+    transform: scale(1.2);
+}
+.x-button:hover svg{
+    fill: var(--bukured);
+    stroke: #ffffff00;
+    cursor:pointer;
+}
+.game-text{
+    color: white;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+}
+.game-name{
+    position: relative;
+    font-family: "Moga";
+    font-size: 60px;
+    font-weight: 100;
+    margin: 0;
+}
+.game-tagline{
+    font-family: "Dimbo";
+    font-size: 40px;
+    font-weight: 100;
+    margin-block: 5px;
+}
+.game-desc{
+    font-family: "Dimbo";
+    font-size: 22px;
+    margin-block: 1rem;
+    letter-spacing: 1px;
+}
+.game-vid{
+    display: flex;
+    flex-direction: column;
+}
+.stores{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-inline: 50px;
+    padding-block: 20px;
+}
+.stores button{
+    width: 200px;
+    font-family: 'Dimbo';
+    font-size: 2rem;
+    padding-block: 10px;
+    padding-inline: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: transform .3s, border .4s;
+}
+.stores button:hover{
+    border: 2px solid #ED4350;
+    background-color: #ED4350;
+    transform: scale(1.1);
+    cursor:pointer;
+}
+
+
+
+/* ---MERCH--- */
+.merch{
+    position: relative;
+    background:url(images/BucketPatternYellow.png);
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-attachment: fixed;
+    background-size: 700px;
+    animation: bgMove 10s linear;
+    animation-iteration-count: infinite; /*116*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.merch::before{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.247), rgba(87, 41, 3, 0.63));
+}
+ .goods{
+    position: relative;
+    flex-direction: column;
+    max-width: 1000px;
+    padding: 100px;
+}
+.goods h2{
+    font-size: var(--h1);
+    font-family: 'Moga';
+    margin: 0;
+}
+.goods p{
+    font-family: 'Dimbo';
+    font-size: 2rem;
+}
+.goods button{
+    font-family: 'Dimbo';
+    font-size: 2rem;
+    padding-block: 10px;
+    padding-inline: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: transform .3s, border .4s;
+}
+.goods button:hover{
+    border: 2px solid #ED4350;
+    background-color: #ED4350;
+    transform: scale(1.1);
+    cursor:pointer;
+}
+.merchstuff{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+} 
+
+
+/* ---CONTACT--- */
+.contact{
+    position: relative;
+    background:url(images/BucketPatternYellow.png);
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-attachment: fixed;
+    background-size: 700px;
+    animation: bgMove 10s linear;
+    animation-iteration-count: infinite; /*116*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.contact::before{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.247), rgba(87, 41, 3, 0.63));
+}
 @keyframes bgMove{
     from{
         background-position: 0px 0px;
@@ -228,8 +643,31 @@ html, body{
     }
 }
 
-
+@media (max-width: 1600px){
+    .nav-items{
+        padding-inline: 200px;
+    }
+    .lad{
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 50px;
+        padding-inline: 50px;
+    }
+    .rprt{
+        flex-direction: column;
+        text-align: center;
+        padding: 50px;
+    }
+    .ck{
+        flex-direction: column;
+        text-align: center;
+        padding: 50px;
+    }
+}
 @media (max-width: 900px){
+    html, body{
+        overflow-x: hidden;
+    }
     nav{
         /* background: linear-gradient(to left, rgba(0, 0, 0, 0.247) 70%, rgba(87, 16, 3, 0.404)), url(images/BucketPatternYellow.png);
         background-size: 700px;
@@ -256,8 +694,12 @@ html, body{
         justify-content: space-between;
     }
     .hamburger-menu{
-        z-index: 9999;
+        z-index: 100;
         display: flex;
+        background: var(--bukured);
+        border-radius: 10px;
+        border: 2px solid white;
+        padding: 10px;
     }
     .tagline h1{
         font-size: 60px;
@@ -287,10 +729,17 @@ html, body{
     }
     .about-container h2{
         font-size: 50px;
-        color: #ED4350;
         text-shadow: 4px 4px rgba(0, 0, 0, 0.178);
     }
     .about-container p{
         font-size: 16px;
+    }
+    footer{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .copyright{
+        position: relative;
+        right: 0;
     }
 }
