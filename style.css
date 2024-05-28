@@ -9,6 +9,10 @@
 :root{
     --bukured: #ED4350;
     --bukuyellow: #EFC31A;
+    --box-width: 500px;
+    --box-height: 500px;
+    --h1: 6rem;
+    --h2: 5rem;
 }
 ::-webkit-scrollbar{
     width: 10px;
@@ -28,10 +32,6 @@ body{
     display: flex;
     flex-direction: column;
 }
-:root{
-   --h1: 6rem;
-   --h2: 5rem;
-}
 
 /* ---NAV--- */
 .nav-holder{
@@ -46,7 +46,7 @@ body{
     /* background: linear-gradient(rgba(0, 0, 0, 0.247) 30%, rgba(87, 41, 3, 0.63)), url(images/BucketPatternYellow.png);
     background-size: 500px;
     box-shadow: 0px 4px rgb(124, 72, 12), 0px 6px 5px rgba(0, 0, 0, 0.247); */
-    background: linear-gradient(rgba(19, 1, 1, 0.5), rgba(0, 0, 0, 0));
+    background: linear-gradient(rgb(19, 1, 1, .5) 30%, rgba(0, 0, 0, 0));
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -161,16 +161,19 @@ footer{
     filter: invert(62%) sepia(89%) saturate(4187%) hue-rotate(322deg) brightness(87%) contrast(117%);
     transform: scale(1.1);
 }
-
+.hidden {
+    display: none;
+}
 /* ---HERO--- */
 .hero{
+    display: flex;
     position: relative;
     min-height: 100vh;
     min-height: 100dvh;
     /* background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(39, 25, 10, 0.9)); */
-    display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .vid{
     position: absolute;
@@ -308,8 +311,10 @@ footer{
     z-index: 1;
     position: relative;
     background:linear-gradient(rgba(190, 119, 12, 0.76), rgba(122, 9, 9, 0.562)), url(images/ladbg.png);
+    background-size: cover;
     min-height: 100vh;
     min-height: 100dvh;
+    
 }
 /* .our-games::before{
     z-index: -1;
@@ -336,12 +341,12 @@ footer{
     align-items: center;
     gap: 50px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .box{
-    overflow: hidden;
     position: relative;
-    height: 500px;
-    width: 500px;
+    height: var(--box-height);
+    width: var(--box-width);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -366,6 +371,14 @@ footer{
     position: absolute;
     transition: .6s;
 } 
+.gamebg-container{
+    overflow:hidden;
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
 .gamebg{
     object-fit: cover;
     width: 100%;
@@ -373,17 +386,38 @@ footer{
     transition: .4s;
     cursor: pointer;
 }
+
+.release-date{
+    font-family: "Moga";
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    text-align: center;
+    pointer-events: none;
+    cursor: pointer;
+    bottom: -1rem;
+    z-index: 1;
+    transform: rotate(3deg);
+}
+.release-date::after{
+    content:'';
+    background-color: var(--bukured);
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: -1;
+    transform: scale(1.2);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.158);
+}
+.spacer{
+    height: 5rem;
+}
 .box:hover .gamebg{
     transform: scale(1.1);
 }
 .box:hover .gamelogo{
     transform: scale(1.2);
 }
-.games-desc{
-    position: relative;
-}
 .lad{
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -391,7 +425,7 @@ footer{
     z-index: 5;
     display: none;
     min-height: 80vh;
-    background: linear-gradient( rgba(34, 18, 7, 0.6), rgba(34, 18, 7, .6)), url(images/ladbg.png);
+    background: linear-gradient(rgba(190, 119, 12, 0.76), rgba(122, 9, 9, 0.562)), url(images/ladbg.png);
     padding-inline: 200px;
     padding-top: 150px;
     background-repeat: no-repeat;
@@ -404,7 +438,6 @@ footer{
     opacity: 0;
 }
 .rprt{
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -412,7 +445,7 @@ footer{
     z-index: 5;
     display: none;
     min-height: 80vh;
-    background:url(images/rprtbg.png);
+    background: linear-gradient(rgba(190, 119, 12, 0.76), rgba(122, 9, 9, 0.562)), url(images/rprtbg.png);
     padding-inline: 200px;
     padding-top: 150px;
     background-repeat: no-repeat;
@@ -425,7 +458,6 @@ footer{
     opacity: 0;
 }
 .ck{
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -433,7 +465,7 @@ footer{
     z-index: 5;
     display: none;
     min-height: 80vh;
-    background:url(images/ckbg.png);
+    background: linear-gradient(rgba(190, 119, 12, 0.76), rgba(122, 9, 9, 0.562)), url(images/ckbg.png);
     padding-inline: 200px;
     padding-top: 150px;
     background-repeat: no-repeat;
@@ -447,39 +479,20 @@ footer{
 }
 .x-button{
     position: absolute;
-    display: flex;
-    fill: var(--bukuyellow);
     top: 50px;
     right: 50px;
-    width: 8rem;
-    align-items: center;
-    justify-content: center;
-    transition: transform .3s, fill .4s, border .4s;
-}
-.x-button label{
-    z-index: 5;
-    position: absolute;
-    font-family: 'Dimbo';
-    font-size: 3rem;
-    padding-inline: 20px;
+    padding: 20px;
+    background: none;
     color: white;
-    transition: .3s;
-    cursor:pointer;
-}
-.x-button svg{
-    fill: rgba(255, 0, 0, 0);
-    stroke: #ffffff;
-    stroke-width: 10px;
-    stroke-linecap:square;
-    transition: .3s;
-    filter: drop-shadow(3px 5px 0 rgba(0, 0, 0, 0.349));
+    font-family: 'Moga';
+    font-size: 50px;
+    border: 4px solid white;
+    transition: transform .3s, border .4s;
 }
 .x-button:hover{
-    transform: scale(1.2);
-}
-.x-button:hover svg{
-    fill: var(--bukured);
-    stroke: #ffffff00;
+    border: 2px solid #ED4350;
+    background-color: #ED4350;
+    transform: scale(1.1) rotate(-3deg);
     cursor:pointer;
 }
 .game-text{
@@ -487,6 +500,7 @@ footer{
     max-width: 700px;
     display: flex;
     flex-direction: column;
+    text-shadow: .2rem .2rem rgba(0, 0, 0, 0.308);
 }
 .game-name{
     position: relative;
@@ -510,16 +524,23 @@ footer{
 .game-vid{
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    aspect-ratio: 16 / 9;
+	width: 100%;
+}
+iframe{
+    height: 100%;
+	width: 100%;
+    aspect-ratio: 16 / 9;
+	
 }
 .stores{
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding-inline: 50px;
-    padding-block: 20px;
 }
 .stores button{
-    width: 200px;
+    min-width: 200px;
     font-family: 'Dimbo';
     font-size: 2rem;
     padding-block: 10px;
@@ -528,6 +549,7 @@ footer{
     border: 2px solid white;
     color: white;
     transition: transform .3s, border .4s;
+
 }
 .stores button:hover{
     border: 2px solid #ED4350;
@@ -565,7 +587,7 @@ footer{
     position: relative;
     flex-direction: column;
     max-width: 1000px;
-    padding: 100px;
+    padding: 50px;
 }
 .goods h2{
     font-size: var(--h1);
@@ -624,6 +646,51 @@ footer{
     height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.247), rgba(87, 41, 3, 0.63));
 }
+.contact-us{
+    margin: 0;
+    position: relative;
+    flex-direction: column;
+    max-width: 1000px;
+    padding: 50px;
+}
+.contact-us h2{
+    font-size: var(--h1);
+    font-family: 'Moga';
+    margin: 0;
+}
+.contact-us p{
+    font-family: 'Dimbo';
+    font-size: 2rem;
+}
+.contact-us button{
+    font-family: 'Dimbo';
+    font-size: 2rem;
+    padding-block: 10px;
+    padding-inline: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: transform .3s, border .4s;
+}
+.contact-us button:hover{
+    border: 2px solid #ED4350;
+    background-color: #ED4350;
+    transform: scale(1.1);
+    cursor:pointer;
+}
+.img-holder{
+    background: blue;
+    position: absolute;
+    left: 0;
+    min-height: 700px;
+}
+.img-holder img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 100%;
+    width: auto;
+}
 @keyframes bgMove{
     from{
         background-position: 0px 0px;
@@ -650,18 +717,17 @@ footer{
     .lad{
         flex-direction: column;
         text-align: center;
-        padding-bottom: 50px;
-        padding-inline: 50px;
     }
     .rprt{
         flex-direction: column;
         text-align: center;
-        padding: 50px;
     }
     .ck{
         flex-direction: column;
         text-align: center;
-        padding: 50px;
+    }
+    .game-vid{
+        margin-bottom: 20px;
     }
 }
 @media (max-width: 900px){
@@ -674,7 +740,7 @@ footer{
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.247); */
         background: black;
         position: fixed;
-        inset: 0 0 0 30%;
+        inset: -10% 0 -10% 30%;
         transform: translateX(110%);
         transition: transform .3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     }
@@ -683,7 +749,7 @@ footer{
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding-top: 15vh;
+        justify-content: center;
         gap: 25px;
     }
     .nav-items a{
@@ -712,6 +778,7 @@ footer{
     .about-us{
         display: block;
         min-height: 50vh;
+        background-attachment: scroll;
     }
     .spline-container{
         width: 100%;
@@ -725,6 +792,7 @@ footer{
         max-width: 100%;
         display: block;
         margin: 0;
+        margin-bottom: 50px;
         right: 0;
     }
     .about-container h2{
@@ -733,6 +801,72 @@ footer{
     }
     .about-container p{
         font-size: 16px;
+    }
+    .banner h2{
+        margin-top: 2em;
+        font-size: 50px;
+        font-family: 'Moga';
+        color: white;
+        text-shadow: .08em .08em rgba(0, 0, 0, 0.178);
+    }
+    .release-date{
+        font-size: 1.5rem;
+    }
+    .game-name{
+        position: relative;
+        font-family: "Moga";
+        font-size: 50px;
+        font-weight: 100;
+        margin-top: 100px;
+    }
+    .game-tagline{
+        font-family: "Dimbo";
+        font-size: 30px;
+        font-weight: 100;
+        margin-block: 5px;
+    }
+    .game-desc{
+        font-family: "Dimbo";
+        font-size: 16px;
+        margin-block: 1rem;
+        letter-spacing: 1px;
+        padding-inline: 30px;
+    }
+    .game-vid{
+        margin-bottom: 0;
+    }
+    .lad{
+        padding: 20px;
+    }
+    .rprt{
+        padding: 20px;
+    }
+    .ck{
+        padding: 20px;
+    }
+    .x-button{
+        font-size: 20px;
+        padding: 15px;
+        right: 20px;
+    }
+    .stores{
+        display: inline-block;
+    }
+    .stores button{
+        font-size: 1rem;
+        margin: 10px;
+    }
+    .goods h2{
+        font-size: 60px;
+    }
+    .goods p{
+        font-size: 25px;
+    }
+    .contact-us h2{
+        font-size: 60px;
+    }
+    .contact-us p{
+        font-size: 25px;
     }
     footer{
         flex-direction: column;
